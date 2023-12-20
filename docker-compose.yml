@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  mms:
+    container_name: mssql-meilisearch-sync
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 7770:7770
+    

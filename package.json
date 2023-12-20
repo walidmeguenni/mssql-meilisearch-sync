@@ -1,0 +1,20 @@
+{
+  "name": "mssql-meilisearch-sync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "nodemon ./src/main.js"
+  },
+  "author": "Meguenni Walid",
+  "license": "MIT",
+  "dependencies": {
+    "meilisearch": "^0.36.0",
+    "mssql": "^10.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
