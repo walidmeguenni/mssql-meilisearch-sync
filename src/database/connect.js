@@ -2,7 +2,7 @@ import sql from "mssql";
 const config = {
   user: "walid",
   password: "root",
-  server: "DESKTOP-CL28PIV",
+  server: "host.docker.internal",
   database: "Test",
   options: {
     encrypt: false,

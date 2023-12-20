@@ -10,4 +10,8 @@ services:
       - /app/node_modules
     ports:
       - 7770:7770
-    
+    networks:
+      - meilisearch
+networks:
+  meilisearch:
+    driver: bridge
