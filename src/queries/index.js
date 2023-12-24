@@ -1,3 +1,2 @@
-export { cdcQuery } from "./cdc.js";
-export { cursorQuery } from "./cursor.js";
-export { offsetQuery } from "./offset.js";
+export { UserCdcQuery, AdhocCdcQuery } from "./cdc/index.js";
+export { userUploadQuery, adhocUploadQuery } from "./upload/index.js";

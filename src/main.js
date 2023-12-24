@@ -1,13 +1,30 @@
 import { cdc, cursorUpload, init } from "./core/index.js";
+import { AdhocCdcQuery, adhocUploadQuery } from "./queries/index.js";
 
-const main = async (index, interval,  start_lsn) => {
+const main = async ( index, queruyUpload, cursor, queruyCdc, startLsnList , operationList, pageSize,  interval ) => {
   try {
     await init(index);
-    await cursorUpload(index);
-    await cdc(index, interval,  start_lsn);
+    await cursorUpload(index, queruyUpload, cursor, pageSize);
+    await cdc(index, queruyCdc, startLsnList, operationList, pageSize, interval);
   } catch (error) {
     console.log("mssql meilisearch :", error);
   }
 };
-let start_lsn = "0x00000000000000000001";
-main("User", 1000, start_lsn);
+
+let index = "Adhoc";
+let cursor = 0;
+
+let startLsnList = {
+  Response_start_lsn,
+  ProcessTimes_start_lsn,
+}
+
+let operationList = {
+  Response_operation,
+  ProcessTimes_operation,
+}
+
+let pageSize = 10000;
+let interval = 1000;
+
+main(index, adhocUploadQuery , cursor, AdhocCdcQuery, startLsnList,operationList, pageSize, interval);

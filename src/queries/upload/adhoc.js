@@ -1,7 +1,5 @@
-export const offsetQuery = (
-  page,
-  pageSize
-) => `SELECT r.OID as id, r.SequenceNumber, r.Type, r.Priority, r.HandlingResource,r.Zone,r.AgencyName,r.DispatchGroup,
+export const adhocUploadQuery = (cursor, pageSize) => {
+    return `SELECT Top ${pageSize} r.OID as id, r.SequenceNumber, r.Type, r.Priority, r.HandlingResource,r.Zone,r.AgencyName,r.DispatchGroup,
                                      r.IncidentNumber,r.PrimaryResponse,r.CreationDate,r.ClassificationName, 
                                      r.DispatcherDisplayName, r.DispatcherLogonName,r.CreationTime,
                                      r.StatusTime,r.IncidentCreationTime,r.ResponseLocation,
@@ -16,7 +14,7 @@ export const offsetQuery = (
                                   LEFT JOIN ResourcesAssigned ra ON r.OID  = ra.ResponseOID
                                   LEFT JOIN Call ca ON r.OID  = ca.ResponseOID
                                   LEFT JOIN Comment co ON r.OID  = co.ResponseOID
-                                  ORDER BY OID 
-                                  OFFSET ${(page - 1) * pageSize} ROWS 
-                                  FETCH NEXT ${pageSize} ROWS ONLY
+                                  WHERE r.OID > ${cursor}
+                                  ORDER BY OID
   `;
+};

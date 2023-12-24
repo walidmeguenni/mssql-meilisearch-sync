@@ -3,7 +3,7 @@ const config = {
   user: "walid",
   password: "root",
   server: "host.docker.internal",
-  database: "Test",
+  database: "Adhoc",
   options: {
     encrypt: false,
     trustServerCertificate: true,

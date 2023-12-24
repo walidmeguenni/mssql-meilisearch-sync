@@ -1,4 +1,4 @@
-export const cdcQuery =(start_lsn )=> `
+export const UserCdcQuery =(start_lsn )=> `
 SELECT TOP (1000) [__$start_lsn]
                 ,[__$operation]
                 ,[UserID] AS id
