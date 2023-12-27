@@ -1,2 +1,4 @@
-export { adhocUploadQuery } from "./adhoc.js"
-export { userUploadQuery } from "./user.js"
+const { adhocUploadQuery } = require("./adhoc")
+const { testUploadQuery } = require("./test")
+
+module.exports = { adhocUploadQuery, testUploadQuery };

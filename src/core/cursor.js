@@ -1,7 +1,7 @@
-import meiliSearchClient from "../meilisearch/meilisearchClient.js";
-import { queryDB } from "../database/connect.js";
+const  meiliSearchClient = require("../meilisearch/meilisearchClient.js");
+const { queryDB } = require("../database/connect.js");
 
-export const cursorUpload = async (index, cursorQuery, cursor, pageSize) => {
+const cursorUpload = async (index, cursorQuery, cursor, pageSize) => {
   const pool = await queryDB();
   const Index =  meiliSearchClient.index(index);
   try {
@@ -24,3 +24,5 @@ export const cursorUpload = async (index, cursorQuery, cursor, pageSize) => {
     pool.close()
   }
 }
+
+module.exports = { cursorUpload };

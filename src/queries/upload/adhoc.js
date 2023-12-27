@@ -1,4 +1,4 @@
-export const adhocUploadQuery = (cursor, pageSize) => {
+const adhocUploadQuery = (cursor, pageSize) => {
     return `SELECT Top ${pageSize} r.OID as id, r.SequenceNumber, r.Type, r.Priority, r.HandlingResource,r.Zone,r.AgencyName,r.DispatchGroup,
                                      r.IncidentNumber,r.PrimaryResponse,r.CreationDate,r.ClassificationName, 
                                      r.DispatcherDisplayName, r.DispatcherLogonName,r.CreationTime,
@@ -18,3 +18,5 @@ export const adhocUploadQuery = (cursor, pageSize) => {
                                   ORDER BY OID
   `;
 };
+
+module.exports = { adhocUploadQuery };

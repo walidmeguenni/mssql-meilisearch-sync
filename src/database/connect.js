@@ -1,9 +1,9 @@
-import sql from "mssql";
+const  sql = require("mssql");
 const config = {
   user: "walid",
   password: "root",
   server: "host.docker.internal",
-  database: "Adhoc",
+  database: "Test",
   options: {
     encrypt: false,
     trustServerCertificate: true,
@@ -11,7 +11,7 @@ const config = {
   },
 };
 
-export const queryDB = async () => {
+const queryDB = async () => {
   try {
     const pool = await sql.connect(config);
     return pool;
@@ -19,3 +19,5 @@ export const queryDB = async () => {
     console.log(err);
   }
 };
+
+module.exports = { queryDB };

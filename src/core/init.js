@@ -1,6 +1,6 @@
-import meiliSearchClient from "../meilisearch/meilisearchClient.js";
+const  meiliSearchClient = require("../meilisearch/meilisearchClient.js");
 
-export const init = async (index) => {
+const init = async (index) => {
   try {
     await meiliSearchClient.deleteIndex(index);
     console.log("delete index if it's exist ====> ", index )
@@ -12,3 +12,5 @@ export const init = async (index) => {
     console.log("Meilisearch error: ", error);
   }
 };
+
+module.exports = { init };

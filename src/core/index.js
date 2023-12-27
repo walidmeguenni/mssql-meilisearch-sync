@@ -1,4 +1,5 @@
-export { cursorUpload } from "./cursor.js";
-export { init } from "./init.js";
-export { cdc } from "./cdc.js";
-export { deleteDocument } from "./delete.js";
+const { cdc } = require('./cdc');
+const { cursorUpload } = require('./cursor');
+const { init } = require('./init');
+
+module.exports = { cdc, cursorUpload, init };
