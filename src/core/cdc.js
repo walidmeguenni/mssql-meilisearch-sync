@@ -44,12 +44,14 @@ const cdc = async (index, queruyCdcId, queruyCdc, start_lsn , pageSize, interval
           }
           if (record.__$operation === 4 || record.__$operation === 3) {
             console.log("updated record ===> ", record.id);
-            await Index.addDocuments([customRecord]);
+            const oldDoc = await Index.getDocument(record.id);
+            const currentDoc = {...oldDoc, ...customRecord}
+            await Index.updateDocuments([currentDoc]);
           }
         }
       }
     }
-    // console.log("cdc end at", Date.now(), "form process", process.pid)
+    // console.log("cdc end at", Date.now(), "form process", process.pid) 
   } catch (error) {
     console.error("Error fetching CDC data:", error.message);
   } finally {
